@@ -3,131 +3,352 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101119">
 <title>Réservation S42 · Les Écrans de Villeneuve</title>
 <style>
-:root { font: 16px system-ui, sans-serif; color-scheme: dark; background: #141722; color: #f4f5fa; }
-main { max-width: 52rem; margin: auto; padding: 2rem 1rem; }
-h1 { margin-bottom: .3rem; }
-a { color: #9adfff; }
-.ecran { text-align: center; border-bottom: 3px solid #99c6e0; padding: .65rem; margin: 1.3rem 0; }
-#plan { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: .3rem; }
-button, select { font: inherit; padding: .55rem; border-radius: .35rem; border: 1px solid #8592aa; }
-#plan button { padding: .55rem 0; font-size: clamp(.62rem, 2.4vw, .95rem); }
-button[aria-pressed="true"] { background: #a1f4d1; color: #10221a; }
-button:disabled { opacity: .48; }
-label { display: block; margin-bottom: .35rem; }
-#etat { min-height: 2rem; padding: .6rem 0; }
+:root {
+  color-scheme: dark;
+  font: 16px/1.55 system-ui, sans-serif;
+  --fond: #101119;
+  --panneau: #191b26;
+  --texte: #f6f2ec;
+  --secondaire: #bdbbc8;
+  --bord: #37394a;
+  --ambre: #ffce8d;
+  --menthe: #9ce6c5;
+  background: var(--fond);
+  color: var(--texte);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+header, main, footer { width: min(72rem, calc(100% - 2rem)); margin-inline: auto; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--bord); }
+.marque { display: flex; align-items: center; gap: .65rem; font-weight: 750; }
+.monogramme { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border: 1px solid #9a724b; border-radius: .65rem; color: var(--ambre); font: 700 1.15rem Georgia, serif; }
+.badge, .surtitre { font-size: .73rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.badge { color: var(--ambre); padding: .28rem .58rem; border: 1px solid #765636; border-radius: 2rem; white-space: nowrap; }
+.hero { padding: clamp(1.7rem, 4vw, 3rem) 0 1.55rem; }
+.surtitre { color: var(--ambre); }
+h1 { font: 500 clamp(2.15rem, 5vw, 4.1rem)/1.05 Georgia, serif; letter-spacing: -.035em; margin: .28rem 0 .55rem; }
+h2 { margin: 0; font-size: 1.15rem; }
+p { margin: 0; }
+.hero p:last-child, .secondaire { color: var(--secondaire); }
+.disposition { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, 20rem); gap: 1rem; align-items: start; }
+.carte { min-width: 0; padding: clamp(.8rem, 2vw, 1.4rem); border: 1px solid var(--bord); border-radius: 1rem; background: var(--panneau); }
+.titre-carte { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
+#disponibilite { color: var(--menthe); font-size: .84rem; }
+.ecran { text-align: center; color: var(--ambre); letter-spacing: .22em; text-transform: uppercase; font-size: .7rem; margin: 1.35rem auto 1rem; max-width: 82%; }
+.ecran::before { content: ''; display: block; height: .3rem; margin-bottom: .6rem; border-radius: 60% 60% .2rem .2rem; background: linear-gradient(90deg, transparent, var(--ambre), transparent); box-shadow: 0 -.2rem 1rem #ffce8d30; }
+.defilement { overflow-x: auto; }
+#plan { display: grid; gap: .3rem; padding: .15rem; min-width: var(--largeur-plan, auto); }
+.rangee { display: grid; grid-template-columns: 1.1rem repeat(var(--colonnes), minmax(0, 1fr)); gap: clamp(.16rem, .5vw, .4rem); align-items: center; }
+.rang { color: var(--secondaire); font-size: .72rem; font-weight: 700; }
+button, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: default; }
+button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--ambre); outline-offset: 2px; }
+.fauteuil { min-width: 0; min-height: 2rem; padding: 0; color: var(--texte); background: #2a2c3a; border: 1px solid #505269; border-radius: .42rem .42rem .27rem .27rem; font-size: clamp(.57rem, 1.35vw, .8rem); font-variant-numeric: tabular-nums; font-weight: 700; }
+.fauteuil:hover:not(:disabled) { border-color: var(--menthe); }
+.fauteuil[aria-pressed="true"], .pastille.choisie { background: var(--menthe); border-color: var(--menthe); color: #14271e; }
+.fauteuil.indisponible, .pastille.indisponible { background: repeating-linear-gradient(135deg,#21232e,#21232e 4px,#303240 4px,#303240 6px); border-color: #404252; color: #aaaaba; }
+.legende { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1rem 0 0; padding: 0; list-style: none; color: var(--secondaire); font-size: .78rem; }
+.legende li { display: flex; align-items: center; gap: .4rem; }
+.pastille { width: .8rem; height: .8rem; border: 1px solid #505269; border-radius: .2rem; background: #2a2c3a; }
+.compteur { color: var(--secondaire); font-size: .82rem; white-space: nowrap; }
+#selection { display: grid; gap: .45rem; margin: .9rem 0; }
+#vide { color: var(--secondaire); font-size: .88rem; padding: .6rem 0 .9rem; }
+.billet { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .5rem; align-items: center; }
+.billet span { font-weight: 750; color: var(--menthe); }
+select { min-width: 0; width: 100%; padding: .42rem; background: #242633; color: var(--texte); border: 1px solid var(--bord); border-radius: .38rem; }
+.action { width: 100%; border-radius: .55rem; border: 1px solid transparent; padding: .65rem .55rem; background: var(--ambre); color: #2d1e11; font-weight: 750; }
+.action:hover:not(:disabled) { background: #ffdda9; }
+.action:disabled { background: #383444; color: #c3b9cc; }
+.action.secondaire { background: transparent; color: var(--texte); border-color: var(--bord); margin-top: .55rem; }
+.action.secondaire:hover:not(:disabled) { background: #303344; }
+#recu { margin: .85rem 0 0; border-top: 1px solid var(--bord); padding-top: .9rem; }
+#statut { font-weight: 750; color: var(--menthe); }
+#montant { font-size: 1.55rem; font-weight: 750; font-variant-numeric: tabular-nums; }
+#places-commande, #delai { color: var(--secondaire); font-size: .88rem; }
+#delai { margin: .3rem 0 .6rem; }
+#reference { color: var(--ambre); font-size: .85rem; }
+details { margin: .55rem 0; }
+summary { color: var(--secondaire); font-size: .78rem; cursor: pointer; }
+code { display: block; overflow-wrap: anywhere; font-size: .76rem; margin-top: .35rem; }
+#message { margin-top: .7rem; color: #ffc0b3; font-size: .87rem; }
+#message:empty { display: none; }
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1rem; color: var(--secondaire); font-size: .83rem; padding: 1.15rem 0 1.5rem; }
+a { color: var(--ambre); }
+[hidden] { display: none !important; }
+@media (max-width: 48rem) { .disposition { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 26rem) {
+  .marque { font-size: .88rem; }
+  .badge { font-size: .62rem; }
+  .rangee { grid-template-columns: .7rem repeat(var(--colonnes), minmax(0, 1fr)); }
+  .fauteuil { min-height: 1.8rem; }
+}
 </style>
 </head>
 <body>
+<header>
+  <div class="marque"><span class="monogramme" aria-hidden="true">É</span> Les Écrans de Villeneuve</div>
+  <span class="badge">Mode démo</span>
+</header>
 <main>
-<h1>Les Écrans de Villeneuve</h1>
-<p>Séance S42 · Choisissez jusqu’à 10 fauteuils. Les places grisées sont indisponibles.</p>
-<div class="ecran">Écran</div>
-<div id="plan" aria-label="Plan de salle"></div>
-<form id="reservation">
-  <h2>Votre sélection</h2>
-  <div id="selection"></div>
-  <button id="reserver" disabled>Réserver</button>
-  <button id="payer" type="button" disabled>Simuler le paiement PayVia</button>
-</form>
-<p id="etat" role="status"></p>
-<p><a href="/swagger-ui.html">Ouvrir Swagger</a></p>
+  <div class="hero">
+    <p class="surtitre">Billetterie · Séance S42</p>
+    <h1>Choisis tes fauteuils</h1>
+    <p>Jusqu’à 10 places par commande. La réservation les bloque pendant 10 minutes.</p>
+  </div>
+  <div class="disposition">
+    <section class="carte" aria-labelledby="titre-plan">
+      <div class="titre-carte">
+        <h2 id="titre-plan">Plan de salle</h2>
+        <span id="disponibilite"></span>
+      </div>
+      <div class="ecran" aria-hidden="true">Écran</div>
+      <div class="defilement"><div id="plan" aria-label="Fauteuils de la séance"></div></div>
+      <ul class="legende" aria-label="Légende du plan">
+        <li><span class="pastille"></span> Libre</li>
+        <li><span class="pastille choisie"></span> Sélectionné</li>
+        <li><span class="pastille indisponible"></span> Indisponible</li>
+      </ul>
+    </section>
+    <section class="carte" aria-labelledby="titre-selection">
+      <form id="reservation">
+        <div class="titre-carte">
+          <h2 id="titre-selection">Ta sélection</h2>
+          <span class="compteur" id="compteur" aria-live="polite">0 / 10</span>
+        </div>
+        <p id="vide">Choisis une place sur le plan, puis son tarif ici.</p>
+        <div id="selection" hidden></div>
+        <button id="reserver" class="action" disabled>Réserver</button>
+      </form>
+      <div id="recu" hidden>
+        <p id="statut" role="status"></p>
+        <p id="montant"></p>
+        <p id="places-commande"></p>
+        <p id="delai"></p>
+        <p id="reference"></p>
+        <details>
+          <summary>Afficher la référence complète</summary>
+          <code id="reference-complete"></code>
+        </details>
+        <button id="payer" class="action" type="button">Simuler le paiement</button>
+        <button id="nouvelle" class="action secondaire" type="button" hidden>Nouvelle réservation</button>
+      </div>
+      <p id="message" role="alert"></p>
+    </section>
+  </div>
 </main>
+<footer>
+  <span>Le paiement est simulé. Aucun débit réel.</span>
+  <a href="/swagger-ui.html">Ouvrir Swagger</a>
+</footer>
 <script>
 const plan = document.querySelector('#plan');
+const formulaire = document.querySelector('#reservation');
 const selection = document.querySelector('#selection');
+const message = document.querySelector('#message');
 const reserver = document.querySelector('#reserver');
 const payer = document.querySelector('#payer');
-const etat = document.querySelector('#etat');
+const nouvelle = document.querySelector('#nouvelle');
+const recu = document.querySelector('#recu');
+const statut = document.querySelector('#statut');
+const delai = document.querySelector('#delai');
 const choix = new Map();
-const categories = ['PLEIN', 'REDUIT', 'ENFANT', 'MATIN', 'ABONNE'];
-let places = [];
+const fauteuils = new Map();
+const tarifs = {
+  PLEIN: 'Plein tarif', REDUIT: 'Tarif réduit', ENFANT: 'Enfant', MATIN: 'Séance du matin', ABONNE: 'Abonné'
+};
 let commande = null;
 let occupe = false;
+let actualisation = 0;
 
 async function requete(url, body) {
   const response = await fetch(url, body === undefined ? {} : {
     method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
   });
   if (response.status === 204) return;
-  const resultat = await response.json();
-  if (!response.ok) throw new Error(resultat.detail || 'Requête refusée (' + response.status + ')');
+  const resultat = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(resultat?.detail || 'Requête refusée (' + response.status + ').');
+  if (resultat === null) throw new Error('Le serveur a renvoyé une réponse illisible.');
   return resultat;
 }
 
-function afficher() {
-  plan.replaceChildren(...places.map(({place, libre}) => {
-    const bouton = document.createElement('button');
-    bouton.textContent = place;
-    bouton.disabled = !libre || occupe;
+function afficherFauteuils() {
+  for (const [place, { bouton, libre }] of fauteuils) {
+    bouton.disabled = !libre || occupe || Boolean(commande);
+    bouton.classList.toggle('indisponible', !libre);
     bouton.setAttribute('aria-pressed', choix.has(place));
-    bouton.addEventListener('click', () => {
-      if (choix.has(place)) choix.delete(place);
-      else if (choix.size < 10) choix.set(place, 'PLEIN');
-      else etat.textContent = 'La sélection est limitée à 10 fauteuils.';
-      afficher();
-    });
-    return bouton;
-  }));
-  selection.replaceChildren(...Array.from(choix, ([place, categorie]) => {
-    const label = document.createElement('label');
-    const select = document.createElement('select');
-    for (const type of categories) select.add(new Option(type, type));
-    select.value = categorie;
-    select.disabled = occupe;
-    select.addEventListener('change', () => choix.set(place, select.value));
-    label.append(place + ' ', select);
-    return label;
-  }));
-  reserver.disabled = occupe || !choix.size || Boolean(commande);
-  payer.disabled = occupe || !commande;
-}
-
-async function chargerPlan(enArrierePlan = false) {
-  const actualisees = await requete('/seances/S42/places');
-  if (enArrierePlan && (occupe || JSON.stringify(places) === JSON.stringify(actualisees))) return;
-  places = actualisees;
-  for (const {place, libre} of places) if (!libre) choix.delete(place);
-  afficher();
-}
-
-async function executer(action) {
-  occupe = true;
-  afficher();
-  try {
-    await action();
-  } catch (erreur) {
-    etat.textContent = erreur.message;
-  } finally {
-    try { await chargerPlan(); }
-    catch (erreur) { etat.textContent += ' Plan indisponible. ' + erreur.message; }
-    occupe = false;
-    afficher();
   }
 }
 
-document.querySelector('#reservation').addEventListener('submit', evenement => {
+function afficherSelection() {
+  selection.replaceChildren(...Array.from(choix, ([place, categorie]) => {
+    const label = document.createElement('label');
+    label.className = 'billet';
+    const code = document.createElement('span');
+    code.textContent = place;
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', 'Tarif du fauteuil ' + place);
+    for (const [valeur, nom] of Object.entries(tarifs)) select.add(new Option(nom, valeur));
+    select.value = categorie;
+    select.disabled = occupe;
+    select.addEventListener('change', () => choix.set(place, select.value));
+    label.append(code, select);
+    return label;
+  }));
+  selection.hidden = !choix.size;
+  document.querySelector('#vide').hidden = Boolean(choix.size);
+  document.querySelector('#compteur').textContent = choix.size + ' / 10';
+  reserver.disabled = occupe || !choix.size;
+}
+
+function choisir(place) {
+  message.textContent = '';
+  if (choix.has(place)) choix.delete(place);
+  else if (choix.size === 10) {
+    message.textContent = 'Tu peux choisir jusqu’à 10 fauteuils par commande.';
+    return;
+  } else choix.set(place, 'PLEIN');
+  afficherFauteuils();
+  afficherSelection();
+}
+
+function construirePlan(places) {
+  const rangees = new Map();
+  fauteuils.clear();
+  plan.replaceChildren();
+  for (const { place, libre } of places) {
+    const rang = place.charAt(0);
+    if (!rangees.has(rang)) {
+      const rangee = document.createElement('div');
+      rangee.className = 'rangee';
+      const etiquette = document.createElement('span');
+      etiquette.className = 'rang';
+      etiquette.textContent = rang;
+      etiquette.setAttribute('aria-hidden', 'true');
+      rangee.append(etiquette);
+      rangees.set(rang, rangee);
+      plan.append(rangee);
+    }
+    const bouton = document.createElement('button');
+    bouton.className = 'fauteuil';
+    bouton.type = 'button';
+    bouton.textContent = place;
+    bouton.addEventListener('click', () => choisir(place));
+    rangees.get(rang).append(bouton);
+    fauteuils.set(place, { bouton, libre });
+  }
+  const colonnes = Math.max(1, ...Array.from(rangees.values(), rangee => rangee.children.length - 1));
+  plan.style.setProperty('--colonnes', colonnes);
+  if (colonnes > 12) plan.style.setProperty('--largeur-plan', (colonnes * 2.4) + 'rem');
+  else plan.style.removeProperty('--largeur-plan');
+}
+
+async function chargerPlan(enArrierePlan = false) {
+  const version = ++actualisation;
+  const places = await requete('/seances/S42/places');
+  if (version !== actualisation || (enArrierePlan && occupe)) return;
+  if (places.length !== fauteuils.size || places.some(({ place }) => !fauteuils.has(place))) construirePlan(places);
+  let selectionModifiee = false;
+  for (const { place, libre } of places) {
+    fauteuils.get(place).libre = libre;
+    if (!libre && choix.delete(place)) selectionModifiee = true;
+  }
+  const libres = places.filter(place => place.libre).length;
+  document.querySelector('#disponibilite').textContent = libres + ' sur ' + places.length + ' disponibles';
+  afficherFauteuils();
+  if (selectionModifiee) afficherSelection();
+}
+
+function secondesRestantes() {
+  return Math.max(0, Math.ceil((Date.parse(commande.payerAvant) - Date.now()) / 1000));
+}
+
+function afficherDelai() {
+  if (!commande || commande.confirmee) return;
+  const secondes = secondesRestantes();
+  if (!secondes) {
+    if (statut.textContent !== 'Délai de réservation écoulé') statut.textContent = 'Délai de réservation écoulé';
+    delai.textContent = 'Les fauteuils peuvent être remis en vente.';
+    payer.hidden = true;
+    nouvelle.hidden = false;
+    nouvelle.disabled = occupe;
+    return;
+  }
+  const minutes = String(Math.floor(secondes / 60)).padStart(2, '0');
+  const reste = String(secondes % 60).padStart(2, '0');
+  delai.textContent = 'Temps restant pour payer · ' + minutes + ':' + reste;
+}
+
+function afficherCommande() {
+  formulaire.hidden = Boolean(commande);
+  recu.hidden = !commande;
+  if (!commande) return;
+  statut.textContent = commande.confirmee
+    ? (commande.urlPaiement ? 'Notification de paiement reçue' : 'Commande confirmée')
+    : 'Fauteuils bloqués';
+  document.querySelector('#montant').textContent = commande.total;
+  document.querySelector('#places-commande').textContent = 'Fauteuils ' + commande.places.join(', ');
+  document.querySelector('#reference').textContent = 'Réf. courte · …' + commande.commande.slice(-8).toUpperCase();
+  document.querySelector('#reference-complete').textContent = commande.commande;
+  delai.hidden = commande.confirmee;
+  payer.hidden = commande.confirmee;
+  payer.disabled = occupe;
+  nouvelle.hidden = !commande.confirmee;
+  nouvelle.disabled = occupe;
+  afficherDelai();
+}
+
+async function executer(action) {
+  if (occupe) return;
+  occupe = true;
+  message.textContent = '';
+  afficherFauteuils();
+  afficherSelection();
+  afficherCommande();
+  try {
+    await action();
+  } catch (erreur) {
+    message.textContent = erreur.message;
+  } finally {
+    try { await chargerPlan(); }
+    catch (erreur) { message.textContent = [message.textContent, 'Plan indisponible.'].filter(Boolean).join(' '); }
+    occupe = false;
+    afficherFauteuils();
+    afficherSelection();
+    afficherCommande();
+  }
+}
+
+formulaire.addEventListener('submit', evenement => {
   evenement.preventDefault();
+  if (!choix.size) return;
   executer(async () => {
-    const billets = Array.from(choix, ([place, categorie]) => ({place, categorie}));
-    const resultat = await requete('/seances/S42/reservations', {billets});
+    const billets = Array.from(choix, ([place, categorie]) => ({ place, categorie }));
+    const resultat = await requete('/seances/S42/reservations', { billets });
     choix.clear();
-    commande = resultat.urlPaiement ? resultat : null;
-    const limite = new Date(resultat.payerAvant).toLocaleTimeString('fr-FR');
-    etat.textContent = resultat.commande + ' · ' + resultat.total
-      + (commande ? ' · À payer avant ' + limite : ' · Commande confirmée');
+    commande = { ...resultat, places: billets.map(billet => billet.place), confirmee: !resultat.urlPaiement };
   });
 });
-payer.addEventListener('click', () => executer(async () => {
-  await requete('/webhooks/payvia', {
-    event: 'payment.succeeded', reference: commande.commande, payment_id: 'demo-' + commande.commande,
-    amount: commande.totalCentimes, currency: 'EUR', occurred_at: new Date().toISOString()
+payer.addEventListener('click', () => {
+  if (!commande || commande.confirmee || !secondesRestantes()) return;
+  executer(async () => {
+    await requete('/webhooks/payvia', {
+      event: 'payment.succeeded', reference: commande.commande, payment_id: 'demo-' + commande.commande,
+      amount: commande.totalCentimes, currency: 'EUR', occurred_at: new Date().toISOString()
+    });
+    commande.confirmee = true;
   });
-  etat.textContent = 'Notification de paiement reçue pour ' + commande.commande;
+});
+nouvelle.addEventListener('click', () => {
   commande = null;
-}));
-chargerPlan().catch(erreur => etat.textContent = erreur.message);
+  recu.querySelector('details').open = false;
+  executer(async () => {});
+});
+chargerPlan().catch(erreur => message.textContent = erreur.message);
+setInterval(afficherDelai, 1000);
 setInterval(() => {
   if (!occupe) chargerPlan(true).catch(() => {});
 }, 10000);
