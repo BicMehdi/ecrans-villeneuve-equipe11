@@ -17,9 +17,8 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 
 /**
- * Le paiement est confirmé : la commande est payée ET ses places sont vendues, dans la même transaction.
- * C'est l'entorse consciente à la règle 4 de Vernon (ADR-0002) : « payée ⇒ vendue » doit être immédiat,
- * sinon le blocage pourrait expirer et la place être revendue entre les deux.
+ * La vente des places et le passage à PAYEE sont sérialisés dans le démonstrateur.
+ * En production, une seule transaction garantit ce passage pour les deux agrégats (ADR-0002).
  */
 public class ConfirmerPaiementService implements ConfirmerPaiement {
 

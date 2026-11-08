@@ -11,7 +11,7 @@ public record CommandeId(String valeur) {
     }
 
     public static CommandeId nouvelle() {
-        return new CommandeId("C-" + UUID.randomUUID().toString().substring(0, 8));
+        return new CommandeId("C-" + UUID.randomUUID());
     }
 
     @Override

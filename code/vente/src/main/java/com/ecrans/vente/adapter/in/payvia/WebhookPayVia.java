@@ -20,6 +20,9 @@ public class WebhookPayVia {
         if (!"payment.succeeded".equals(notification.event())) {
             return; // paiement refusé : rien à faire, le blocage expirera tout seul (B2)
         }
+        if (notification.reference() == null || notification.reference().isBlank()) {
+            throw new IllegalArgumentException("Référence de commande PayVia requise");
+        }
         confirmerPaiement.executer(new CommandeId(notification.reference()));
     }
 }

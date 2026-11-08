@@ -11,7 +11,7 @@ Installez Java 21 et Maven 3.9 ou ouvrez le module Maven dans IntelliJ.
 
 ```sh
 cd code/vente
-mvn verify
+mvn verify -Pbonus
 mvn spring-boot:run
 ```
 
@@ -25,4 +25,4 @@ Pour démontrer le verrou optimiste JPA sur les séances avec H2, arrêtez la pr
 
 ## État du rendu
 
-Les huit étapes, les scénarios de paiement tardif et dupliqué, la concurrence, le plan, la page de réservation, l’adapter H2 et l’annulation de séance sont implémentés. Le DAT distingue la cible du démonstrateur. Renseignez l’équipe et le lien du dépôt, puis publiez la version à remettre avec le tag `v1.0` et déposez le lien sur Moodle.
+Les huit étapes, les scénarios de paiement tardif et dupliqué, la concurrence, le plan, la page de réservation, l’adapter H2 et l’annulation de séance sont implémentés. Le DAT distingue la cible du démonstrateur. Le [protocole de vérification](docs/verification.md) permet de rejouer la charge de 420 fauteuils. Renseignez l’équipe et le lien du dépôt, puis publiez la version à remettre avec le tag `v1.0` et déposez le lien sur Moodle.

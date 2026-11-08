@@ -10,6 +10,9 @@ public record PlaceId(char rang, int numero) implements Comparable<PlaceId> {
 
     /** {@code PlaceId.de("G7")} */
     public static PlaceId de(String code) {
+        if (code == null || code.length() < 2) {
+            throw new IllegalArgumentException("Place invalide. Format attendu : G7");
+        }
         return new PlaceId(Character.toUpperCase(code.charAt(0)), Integer.parseInt(code.substring(1)));
     }
 

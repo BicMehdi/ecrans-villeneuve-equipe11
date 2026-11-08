@@ -10,6 +10,7 @@ import com.ecrans.vente.application.port.in.ReserverDesPlaces;
 import com.ecrans.vente.domaine.commun.PlaceId;
 import com.ecrans.vente.domaine.commun.SeanceId;
 import com.ecrans.vente.domaine.seance.Seance;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -91,11 +92,14 @@ public class VenteConfiguration {
     }
 
     @Bean
-    CommandLineRunner seanceDeDemonstration(ApplicationVente app, LocalDate dateDeDemonstration) {
+    CommandLineRunner seanceDeDemonstration(ApplicationVente app, LocalDate dateDeDemonstration,
+                                              @Value("${vente.demo.grande-salle:false}") boolean grandeSalle) {
         return args -> {
             var plan = new ArrayList<PlaceId>();
-            for (char rang = 'A'; rang <= 'H'; rang++) {
-                for (int n = 1; n <= 12; n++) plan.add(new PlaceId(rang, n));
+            char dernierRang = grandeSalle ? 'N' : 'H';
+            int placesParRang = grandeSalle ? 30 : 12;
+            for (char rang = 'A'; rang <= dernierRang; rang++) {
+                for (int n = 1; n <= placesParRang; n++) plan.add(new PlaceId(rang, n));
             }
             app.seances.enregistrer(Seance.ouverte(DEMO, dateDeDemonstration.atTime(20, 30), plan));
         };

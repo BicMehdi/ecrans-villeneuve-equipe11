@@ -23,8 +23,8 @@ import java.util.List;
 /**
  * Orchestration seulement : charger, faire décider le domaine, enregistrer, puis appeler le PSP.
  *
- * Choix d'agrégats (ADR-0002, option B) : Seance et Commande sont écrits dans la même transaction.
- * L'appel au PSP est fait APRÈS : on ne garde pas une transaction ouverte pendant un appel réseau.
+ * Le démonstrateur sérialise les écritures sur la séance et la commande dans son processus.
+ * La cible les écrit dans une transaction PostgreSQL (ADR-0002). L'appel au PSP suit les écritures.
  */
 public class ReserverDesPlacesService implements ReserverDesPlaces {
 

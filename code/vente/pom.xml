@@ -48,6 +48,25 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>bonus</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <junit.jupiter.conditions.deactivate>org.junit.jupiter.engine.extension.DisabledCondition</junit.jupiter.conditions.deactivate>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>

@@ -8,3 +8,4 @@ Les sources `.drawio` sont modifiables dans diagrams.net. Les exports PNG portan
 - `3-composants-vente` — ports, adapters et agrégats du contexte Vente
 - `4-sequence-reserver-payer` — confirmation et expiration d’une réservation
 - `5-modele-vente` — agrégats, objets valeur et événements
+- `6-sequence-annuler-seance` — scénario facultatif et réactions asynchrones de la cible

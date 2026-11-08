@@ -30,6 +30,16 @@ class PlanEtAnnulationTest {
     }
 
     @Test
+    void place_gratuite_confirmee_sans_lien_de_paiement() {
+        var reservation = app.reserverDesPlaces.executer(demande("G7", "ABONNE"));
+        assertThat(reservation.total().centimes()).isZero();
+        assertThat(reservation.urlPaiement()).isNull();
+        assertThat(app.commandes.parId(reservation.commande()).orElseThrow().statut()).isEqualTo(StatutCommande.PAYEE);
+        assertThat(app.consulterPlan.executer(S42).get(PlaceId.de("G7"))).isFalse();
+        assertThat(app.publicateur.publies()).hasSize(1);
+    }
+
+    @Test
     void annuler_rembourse_et_expire_une_seule_fois() {
         var payee = app.reserverDesPlaces.executer(demande("G7", "PLEIN")).commande();
         app.confirmerPaiement.executer(payee);

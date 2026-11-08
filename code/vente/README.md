@@ -5,7 +5,7 @@ Java 21, Spring Boot, Maven. Le domaine et l’application sont indépendants de
 ## Vérifications
 
 ```sh
-mvn verify
+mvn verify -Pbonus
 mvn spring-boot:run
 ```
 
@@ -28,3 +28,5 @@ Le profil par défaut utilise les séances en mémoire. Pour H2, lancez `mvn spr
 | `POST /programmation/seances/{seance}/annulation` | Simulation d’une annulation de programmation |
 
 La page et les endpoints sont destinés à une démonstration locale. La catégorie `ABONNE` simule un droit à la gratuité déjà validé. Les paiements, les remboursements et les événements utilisent des simulateurs. Le DAT décrit l’authentification, les contrôles métier et la persistance prévus pour l’exploitation.
+
+Les tests fournis restent identiques. Le profil Maven `bonus` active les tests annotés `@Disabled` dans le squelette. Le [protocole de vérification](../../docs/verification.md) décrit le scénario de charge.
