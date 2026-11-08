@@ -3,101 +3,126 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101119">
+<meta name="theme-color" content="#09234a">
 <title>Réservation S42 · Les Écrans de Villeneuve</title>
 <style>
 :root {
-  color-scheme: dark;
-  font: 16px/1.55 system-ui, sans-serif;
-  --fond: #101119;
-  --panneau: #191b26;
-  --texte: #f6f2ec;
-  --secondaire: #bdbbc8;
-  --bord: #37394a;
-  --ambre: #ffce8d;
-  --menthe: #9ce6c5;
-  background: var(--fond);
-  color: var(--texte);
+  color-scheme: light;
+  font: 16px/1.45 Arial, sans-serif;
+  --navy: #09234a;
+  --blue: #00569d;
+  --red: #c9003c;
+  --red-hover: #ab0033;
+  --paper: #f1f3f7;
+  --text: #152745;
+  --muted: #52617a;
+  --border: #d9dfea;
+  background: var(--paper);
+  color: var(--text);
 }
 * { box-sizing: border-box; }
 body { margin: 0; }
-header, main, footer { width: min(72rem, calc(100% - 2rem)); margin-inline: auto; }
-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--bord); }
-.marque { display: flex; align-items: center; gap: .65rem; font-weight: 750; }
-.monogramme { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border: 1px solid #9a724b; border-radius: .65rem; color: var(--ambre); font: 700 1.15rem Georgia, serif; }
-.badge, .surtitre { font-size: .73rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-.badge { color: var(--ambre); padding: .28rem .58rem; border: 1px solid #765636; border-radius: 2rem; white-space: nowrap; }
-.hero { padding: clamp(1.7rem, 4vw, 3rem) 0 1.55rem; }
-.surtitre { color: var(--ambre); }
-h1 { font: 500 clamp(2.15rem, 5vw, 4.1rem)/1.05 Georgia, serif; letter-spacing: -.035em; margin: .28rem 0 .55rem; }
-h2 { margin: 0; font-size: 1.15rem; }
-p { margin: 0; }
-.hero p:last-child, .secondaire { color: var(--secondaire); }
-.disposition { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, 20rem); gap: 1rem; align-items: start; }
-.carte { min-width: 0; padding: clamp(.8rem, 2vw, 1.4rem); border: 1px solid var(--bord); border-radius: 1rem; background: var(--panneau); }
-.titre-carte { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
-#disponibilite { color: var(--menthe); font-size: .84rem; }
-.ecran { text-align: center; color: var(--ambre); letter-spacing: .22em; text-transform: uppercase; font-size: .7rem; margin: 1.35rem auto 1rem; max-width: 82%; }
-.ecran::before { content: ''; display: block; height: .3rem; margin-bottom: .6rem; border-radius: 60% 60% .2rem .2rem; background: linear-gradient(90deg, transparent, var(--ambre), transparent); box-shadow: 0 -.2rem 1rem #ffce8d30; }
+.wrap { width: min(67.5rem, calc(100% - 2rem)); margin-inline: auto; }
+header { background: var(--navy); color: white; }
+.en-tete { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
+.marque { display: flex; align-items: center; gap: .65rem; line-height: 1.05; font-size: .94rem; font-weight: 800; text-transform: uppercase; }
+.marque small { display: block; margin-top: .2rem; font-size: .67rem; font-weight: 500; letter-spacing: .13em; color: #c5d9f4; }
+.ticket { width: 2.1rem; height: 2.1rem; color: #a9d8fc; }
+.badge { color: #e4edf9; border: 1px solid #617693; font-size: .72rem; padding: .25rem .48rem; white-space: nowrap; }
+.progression { background: white; border-bottom: 1px solid var(--border); }
+.etapes { display: grid; grid-template-columns: repeat(3, 1fr); margin-block: 0; padding: 0; list-style: none; }
+.etapes li { padding: .75rem .4rem .65rem; text-align: center; color: var(--muted); border-bottom: 3px solid transparent; font-size: .84rem; }
+.etapes li[aria-current="step"] { border-color: var(--blue); color: var(--navy); font-weight: 700; }
+.numero { font-size: .72rem; font-weight: 700; margin-right: .35rem; }
+main { padding-top: 1.5rem; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.16; margin-bottom: .85rem; }
+h2 { font-size: 1.12rem; }
+.seance { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.15rem; padding: .75rem 1rem; background: white; border: 1px solid var(--border); border-left: 4px solid var(--blue); }
+.horaire { padding: .35rem .55rem; background: #e5effb; color: var(--navy); font-size: .94rem; font-weight: 800; white-space: nowrap; }
+.seance strong { display: block; }
+.seance p { font-size: .83rem; color: var(--muted); }
+.disposition { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 19rem); gap: 1.15rem; align-items: start; }
+.carte { min-width: 0; padding: clamp(.8rem, 2vw, 1.3rem); border: 1px solid var(--border); background: white; }
+.titre-carte { display: flex; align-items: baseline; justify-content: space-between; gap: .35rem .65rem; flex-wrap: wrap; }
+#disponibilite, .compteur { color: var(--muted); font-size: .82rem; }
+.ecran { width: min(75%, 26rem); margin: 1.05rem auto .9rem; padding: .28rem .4rem; background: #e8edf4; border-top: 2px solid #9cabc0; color: var(--muted); text-align: center; text-transform: uppercase; letter-spacing: .12em; font-size: .65rem; font-weight: 700; }
 .defilement { overflow-x: auto; }
-#plan { display: grid; gap: .3rem; padding: .15rem; min-width: var(--largeur-plan, auto); }
-.rangee { display: grid; grid-template-columns: 1.1rem repeat(var(--colonnes), minmax(0, 1fr)); gap: clamp(.16rem, .5vw, .4rem); align-items: center; }
-.rang { color: var(--secondaire); font-size: .72rem; font-weight: 700; }
+#plan { display: grid; gap: .27rem; padding: .18rem; min-width: var(--largeur-plan, auto); max-width: 36rem; margin-inline: auto; }
+.rangee { display: grid; grid-template-columns: 1rem repeat(var(--colonnes), minmax(0, 1fr)); gap: clamp(.14rem, .5vw, .38rem); align-items: center; }
+.rang { color: var(--muted); font-size: .72rem; font-weight: 700; }
 button, select { font: inherit; }
 button { cursor: pointer; }
 button:disabled { cursor: default; }
-button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--ambre); outline-offset: 2px; }
-.fauteuil { min-width: 0; min-height: 2rem; padding: 0; color: var(--texte); background: #2a2c3a; border: 1px solid #505269; border-radius: .42rem .42rem .27rem .27rem; font-size: clamp(.57rem, 1.35vw, .8rem); font-variant-numeric: tabular-nums; font-weight: 700; }
-.fauteuil:hover:not(:disabled) { border-color: var(--menthe); }
-.fauteuil[aria-pressed="true"], .pastille.choisie { background: var(--menthe); border-color: var(--menthe); color: #14271e; }
-.fauteuil.indisponible, .pastille.indisponible { background: repeating-linear-gradient(135deg,#21232e,#21232e 4px,#303240 4px,#303240 6px); border-color: #404252; color: #aaaaba; }
-.legende { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1rem 0 0; padding: 0; list-style: none; color: var(--secondaire); font-size: .78rem; }
-.legende li { display: flex; align-items: center; gap: .4rem; }
-.pastille { width: .8rem; height: .8rem; border: 1px solid #505269; border-radius: .2rem; background: #2a2c3a; }
-.compteur { color: var(--secondaire); font-size: .82rem; white-space: nowrap; }
-#selection { display: grid; gap: .45rem; margin: .9rem 0; }
-#vide { color: var(--secondaire); font-size: .88rem; padding: .6rem 0 .9rem; }
-.billet { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: .5rem; align-items: center; }
-.billet span { font-weight: 750; color: var(--menthe); }
-select { min-width: 0; width: 100%; padding: .42rem; background: #242633; color: var(--texte); border: 1px solid var(--bord); border-radius: .38rem; }
-.action { width: 100%; border-radius: .55rem; border: 1px solid transparent; padding: .65rem .55rem; background: var(--ambre); color: #2d1e11; font-weight: 750; }
-.action:hover:not(:disabled) { background: #ffdda9; }
-.action:disabled { background: #383444; color: #c3b9cc; }
-.action.secondaire { background: transparent; color: var(--texte); border-color: var(--bord); margin-top: .55rem; }
-.action.secondaire:hover:not(:disabled) { background: #303344; }
-#recu { margin: .85rem 0 0; border-top: 1px solid var(--bord); padding-top: .9rem; }
-#statut { font-weight: 750; color: var(--menthe); }
-#montant { font-size: 1.55rem; font-weight: 750; font-variant-numeric: tabular-nums; }
-#places-commande, #delai { color: var(--secondaire); font-size: .88rem; }
-#delai { margin: .3rem 0 .6rem; }
-#reference { color: var(--ambre); font-size: .85rem; }
-details { margin: .55rem 0; }
-summary { color: var(--secondaire); font-size: .78rem; cursor: pointer; }
+button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.fauteuil { min-width: 0; min-height: 1.9rem; padding: 0; color: #23446b; background: #f8fbff; border: 1px solid #9bb1ca; border-radius: .23rem .23rem .12rem .12rem; font-size: clamp(.55rem, 1.35vw, .77rem); font-variant-numeric: tabular-nums; font-weight: 700; }
+.fauteuil:hover:not(:disabled) { border-color: var(--blue); background: #deedfc; color: var(--navy); }
+.fauteuil[aria-pressed="true"], .fauteuil[aria-pressed="true"]:hover, .pastille.choisie { background: var(--blue); border-color: var(--blue); color: white; }
+.fauteuil.indisponible, .pastille.indisponible { background: #dfe3ea; border-color: #d3d9e3; color: #5c6779; }
+.legende { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem 1rem; margin: .85rem 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .77rem; }
+.legende li { display: flex; align-items: center; gap: .35rem; }
+.pastille { width: .77rem; height: .77rem; border: 1px solid #9bb1ca; border-radius: .12rem; background: #f8fbff; }
+.aide { color: var(--muted); font-size: .85rem; margin: .55rem 0 .8rem; }
+#selection { display: grid; gap: .5rem; margin: .75rem 0; }
+.billet { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .5rem; align-items: center; }
+.billet span { font-weight: 700; }
+select { min-width: 0; width: 100%; padding: .45rem; background: white; color: var(--text); border: 1px solid #b4c0d2; border-radius: .15rem; }
+.action { width: 100%; border: 1px solid transparent; border-radius: .16rem; padding: .68rem .5rem; background: var(--red); color: white; font-weight: 700; }
+.action:hover:not(:disabled) { background: var(--red-hover); }
+.action:disabled { background: #e3e7ef; color: #59667c; }
+.action.secondaire { background: white; color: var(--navy); border-color: #8a9ab1; margin-top: .55rem; }
+.action.secondaire:hover:not(:disabled) { background: var(--paper); }
+#recu h2 { margin-bottom: .45rem; }
+#statut { color: var(--blue); font-size: .86rem; font-weight: 700; }
+#montant { font-size: 1.45rem; font-weight: 700; font-variant-numeric: tabular-nums; margin: .2rem 0; }
+#places-commande, #delai, #reference { color: var(--muted); font-size: .85rem; }
+#delai { margin: .25rem 0 .45rem; }
+details { margin: .5rem 0 .7rem; }
+summary { color: var(--blue); font-size: .79rem; cursor: pointer; }
 code { display: block; overflow-wrap: anywhere; font-size: .76rem; margin-top: .35rem; }
-#message { margin-top: .7rem; color: #ffc0b3; font-size: .87rem; }
+#message { margin-top: .6rem; color: #a60030; font-size: .85rem; }
 #message:empty { display: none; }
-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1rem; color: var(--secondaire); font-size: .83rem; padding: 1.15rem 0 1.5rem; }
-a { color: var(--ambre); }
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1rem; color: var(--muted); font-size: .78rem; padding: 1rem 0 1.35rem; }
+a { color: var(--blue); }
 [hidden] { display: none !important; }
-@media (max-width: 48rem) { .disposition { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 26rem) {
-  .marque { font-size: .88rem; }
-  .badge { font-size: .62rem; }
-  .rangee { grid-template-columns: .7rem repeat(var(--colonnes), minmax(0, 1fr)); }
-  .fauteuil { min-height: 1.8rem; }
+@media (max-width: 46rem) { .disposition { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 25rem) {
+  .wrap { width: calc(100% - 1rem); }
+  .rangee { grid-template-columns: .65rem repeat(var(--colonnes), minmax(0, 1fr)); }
+  .etapes li { font-size: .72rem; padding-inline: .15rem; }
+  .numero { margin-right: .16rem; }
+  .fauteuil { min-height: 1.65rem; }
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="marque"><span class="monogramme" aria-hidden="true">É</span> Les Écrans de Villeneuve</div>
-  <span class="badge">Mode démo</span>
+  <div class="wrap en-tete">
+    <div class="marque">
+      <svg class="ticket" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <path d="M3 8h26v5a3 3 0 0 0 0 6v5H3v-5a3 3 0 0 0 0-6V8Z"/>
+        <path d="M20 10v3m0 2v2m0 2v3M8 13h8m-8 5h6"/>
+      </svg>
+      <span>Les Écrans<small>de Villeneuve</small></span>
+    </div>
+    <span class="badge">Billetterie de démonstration</span>
+  </div>
 </header>
-<main>
-  <div class="hero">
-    <p class="surtitre">Billetterie · Séance S42</p>
-    <h1>Choisis tes fauteuils</h1>
-    <p>Jusqu’à 10 places par commande. La réservation les bloque pendant 10 minutes.</p>
+<nav class="progression" aria-label="Étapes de la réservation">
+  <ol class="wrap etapes">
+    <li aria-current="step"><span class="numero">1.</span> Places et tarifs</li>
+    <li><span class="numero">2.</span> Paiement</li>
+    <li><span class="numero">3.</span> Récapitulatif</li>
+  </ol>
+</nav>
+<main class="wrap">
+  <h1>Réserver des places</h1>
+  <div class="seance">
+    <time class="horaire" datetime="20:30">20 h 30</time>
+    <div>
+      <strong>Séance S42</strong>
+      <p>Les Écrans de Villeneuve · Salle 3</p>
+    </div>
   </div>
   <div class="disposition">
     <section class="carte" aria-labelledby="titre-plan">
@@ -116,14 +141,15 @@ a { color: var(--ambre); }
     <section class="carte" aria-labelledby="titre-selection">
       <form id="reservation">
         <div class="titre-carte">
-          <h2 id="titre-selection">Ta sélection</h2>
+          <h2 id="titre-selection">Votre sélection</h2>
           <span class="compteur" id="compteur" aria-live="polite">0 / 10</span>
         </div>
-        <p id="vide">Choisis une place sur le plan, puis son tarif ici.</p>
+        <p id="vide" class="aide">Sélectionnez vos fauteuils sur le plan, puis choisissez un tarif pour chacun. Dix places maximum par commande.</p>
         <div id="selection" hidden></div>
         <button id="reserver" class="action" disabled>Réserver</button>
       </form>
       <div id="recu" hidden>
+        <h2>Votre réservation</h2>
         <p id="statut" role="status"></p>
         <p id="montant"></p>
         <p id="places-commande"></p>
@@ -140,8 +166,8 @@ a { color: var(--ambre); }
     </section>
   </div>
 </main>
-<footer>
-  <span>Le paiement est simulé. Aucun débit réel.</span>
+<footer class="wrap">
+  <span>Démo · Paiement simulé</span>
   <a href="/swagger-ui.html">Ouvrir Swagger</a>
 </footer>
 <script>
@@ -153,6 +179,7 @@ const reserver = document.querySelector('#reserver');
 const payer = document.querySelector('#payer');
 const nouvelle = document.querySelector('#nouvelle');
 const recu = document.querySelector('#recu');
+const etapes = document.querySelectorAll('.etapes li');
 const statut = document.querySelector('#statut');
 const delai = document.querySelector('#delai');
 const choix = new Map();
@@ -208,7 +235,7 @@ function choisir(place) {
   message.textContent = '';
   if (choix.has(place)) choix.delete(place);
   else if (choix.size === 10) {
-    message.textContent = 'Tu peux choisir jusqu’à 10 fauteuils par commande.';
+    message.textContent = 'Vous pouvez choisir jusqu’à 10 fauteuils par commande.';
     return;
   } else choix.set(place, 'PLEIN');
   afficherFauteuils();
@@ -285,6 +312,11 @@ function afficherDelai() {
 function afficherCommande() {
   formulaire.hidden = Boolean(commande);
   recu.hidden = !commande;
+  const etape = !commande ? 0 : commande.confirmee ? 2 : 1;
+  etapes.forEach((element, index) => {
+    if (index === etape) element.setAttribute('aria-current', 'step');
+    else element.removeAttribute('aria-current');
+  });
   if (!commande) return;
   statut.textContent = commande.confirmee
     ? (commande.urlPaiement ? 'Notification de paiement reçue' : 'Commande confirmée')
