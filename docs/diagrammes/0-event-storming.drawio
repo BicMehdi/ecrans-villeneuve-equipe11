@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Quels événements rythment la vente et l’abonnement ?" id="0-event-storming">
+    <mxGraphModel grid="1" page="1" pageWidth="1320" pageHeight="437">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Quels événements rythment la vente et l’abonnement ?" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=35;fontStyle=1;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="14" width="1272" height="54" />
+        </mxCell>
+        <mxCell id="3" value="Lecture de gauche à droite · la piste Abonnements décrit le système cible." style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="395" width="1272" height="34" />
+        </mxCell>
+        <mxCell id="4" value="Séance&#10;publiée" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="28" y="130" width="230" height="79" />
+        </mxCell>
+        <mxCell id="5" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="258" y="169" />
+            <mxPoint as="targetPoint" x="286" y="169" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6" value="Places&#10;bloquées" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="286" y="130" width="230" height="79" />
+        </mxCell>
+        <mxCell id="7" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="516" y="169" />
+            <mxPoint as="targetPoint" x="544" y="169" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="Commande&#10;payée" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="544" y="130" width="230" height="79" />
+        </mxCell>
+        <mxCell id="9" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="774" y="169" />
+            <mxPoint as="targetPoint" x="802" y="169" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="Billets&#10;émis" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="802" y="130" width="230" height="79" />
+        </mxCell>
+        <mxCell id="11" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1032" y="169" />
+            <mxPoint as="targetPoint" x="1060" y="169" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="12" value="Billet&#10;scanné" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1060" y="130" width="230" height="79" />
+        </mxCell>
+        <mxCell id="13" value="Abonnement&#10;souscrit" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#F1EDF7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="28" y="265" width="230" height="79" />
+        </mxCell>
+        <mxCell id="14" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="258" y="304" />
+            <mxPoint as="targetPoint" x="286" y="304" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="Place gratuite&#10;réservée" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#F1EDF7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="286" y="265" width="230" height="79" />
+        </mxCell>
+        <mxCell id="16" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="516" y="304" />
+            <mxPoint as="targetPoint" x="544" y="304" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="17" value="Validité du billet&#10;terminée" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#F1EDF7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="544" y="265" width="230" height="79" />
+        </mxCell>
+        <mxCell id="18" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="774" y="304" />
+            <mxPoint as="targetPoint" x="802" y="304" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="No-show&#10;constaté" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#F1EDF7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="802" y="265" width="230" height="79" />
+        </mxCell>
+        <mxCell id="20" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1032" y="304" />
+            <mxPoint as="targetPoint" x="1060" y="304" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="21" value="Réservation&#10;suspendue" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#F1EDF7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1060" y="265" width="230" height="79" />
+        </mxCell>
+        <mxCell id="22" value="Branche sans paiement · Blocage expiré → Places libérées → Commande expirée" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=21;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="200" y="223" width="910" height="31" />
+        </mxCell>
+        <mxCell id="23" value="Branche de renoncement · Place gratuite annulée à temps → Quota libéré, aucun no-show" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=21;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="200" y="357" width="910" height="31" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Avec qui la billetterie échange-t-elle ?" id="1-contexte">
+    <mxGraphModel grid="1" page="1" pageWidth="1320" pageHeight="770">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Avec qui la billetterie échange-t-elle ?" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=35;fontStyle=1;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="14" width="1272" height="54" />
+        </mxCell>
+        <mxCell id="3" value="Gris · acteurs et systèmes externes     Vert · système étudié" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="728" width="1272" height="34" />
+        </mxCell>
+        <mxCell id="4" value="Billetterie des Écrans&#10;de Villeneuve" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=30;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="510" y="303" width="300" height="145" />
+        </mxCell>
+        <mxCell id="5" value="Clients et abonnés" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="98" width="250" height="58" />
+        </mxCell>
+        <mxCell id="6" value="FilmoData" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1046" y="98" width="250" height="58" />
+        </mxCell>
+        <mxCell id="7" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="274" y="127" />
+            <mxPoint as="targetPoint" x="510" y="331" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="Réserver, payer, annuler" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="284" y="101" width="215" height="26" />
+        </mxCell>
+        <mxCell id="9" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1046" y="127" />
+            <mxPoint as="targetPoint" x="810" y="331" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="Fiches films" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="873" y="101" width="109" height="26" />
+        </mxCell>
+        <mxCell id="11" value="Caissiers" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="225" width="250" height="58" />
+        </mxCell>
+        <mxCell id="12" value="PayVia" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1046" y="225" width="250" height="58" />
+        </mxCell>
+        <mxCell id="13" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="274" y="254" />
+            <mxPoint as="targetPoint" x="510" y="353" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="14" value="Vendre et encaisser" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="304" y="228" width="176" height="26" />
+        </mxCell>
+        <mxCell id="15" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1046" y="254" />
+            <mxPoint as="targetPoint" x="810" y="353" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="Paiements / remboursements" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="796" y="228" width="263" height="26" />
+        </mxCell>
+        <mxCell id="17" value="Agents d’accueil" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="352" width="250" height="58" />
+        </mxCell>
+        <mxCell id="18" value="SortiesFlash et CinéMalin" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1046" y="352" width="250" height="58" />
+        </mxCell>
+        <mxCell id="19" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="274" y="381" />
+            <mxPoint as="targetPoint" x="510" y="375" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="20" value="Scanner les billets" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="310" y="355" width="164" height="26" />
+        </mxCell>
+        <mxCell id="21" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1046" y="381" />
+            <mxPoint as="targetPoint" x="810" y="375" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="22" value="Ventes déjà payées" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="841" y="355" width="174" height="26" />
+        </mxCell>
+        <mxCell id="23" value="Programmation et marketing" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="479" width="250" height="58" />
+        </mxCell>
+        <mxCell id="24" value="Service d’envoi" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1046" y="479" width="250" height="58" />
+        </mxCell>
+        <mxCell id="25" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="274" y="508" />
+            <mxPoint as="targetPoint" x="510" y="397" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" value="Publier, tarifer, paramétrer" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="273" y="482" width="237" height="26" />
+        </mxCell>
+        <mxCell id="27" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1046" y="508" />
+            <mxPoint as="targetPoint" x="810" y="397" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="28" value="Billets et avis" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="867" y="482" width="121" height="26" />
+        </mxCell>
+        <mxCell id="29" value="Responsable financier" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="606" width="250" height="58" />
+        </mxCell>
+        <mxCell id="30" value="Portail CNC" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1046" y="606" width="250" height="58" />
+        </mxCell>
+        <mxCell id="31" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="274" y="635" />
+            <mxPoint as="targetPoint" x="510" y="419" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="Exporter et rapprocher" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="288" y="609" width="208" height="26" />
+        </mxCell>
+        <mxCell id="33" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1046" y="635" />
+            <mxPoint as="targetPoint" x="810" y="419" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" value="Dépôt manuel par Marc" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="819" y="609" width="217" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réservation S42 · Les Écrans de Villeneuve</title>
+<style>
+:root { font: 16px system-ui, sans-serif; color-scheme: dark; background: #141722; color: #f4f5fa; }
+main { max-width: 52rem; margin: auto; padding: 2rem 1rem; }
+h1 { margin-bottom: .3rem; }
+a { color: #9adfff; }
+.ecran { text-align: center; border-bottom: 3px solid #99c6e0; padding: .65rem; margin: 1.3rem 0; }
+#plan { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: .3rem; }
+button, select { font: inherit; padding: .55rem; border-radius: .35rem; border: 1px solid #8592aa; }
+#plan button { padding: .55rem 0; font-size: clamp(.62rem, 2.4vw, .95rem); }
+button[aria-pressed="true"] { background: #a1f4d1; color: #10221a; }
+button:disabled { opacity: .48; }
+label { display: block; margin-bottom: .35rem; }
+#etat { min-height: 2rem; padding: .6rem 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>Les Écrans de Villeneuve</h1>
+<p>Séance S42 · Choisissez jusqu’à 10 fauteuils. Les places grisées sont indisponibles.</p>
+<div class="ecran">Écran</div>
+<div id="plan" aria-label="Plan de salle"></div>
+<form id="reservation">
+  <h2>Votre sélection</h2>
+  <div id="selection"></div>
+  <button id="reserver" disabled>Réserver</button>
+  <button id="payer" type="button" disabled>Simuler le paiement PayVia</button>
+</form>
+<p id="etat" role="status"></p>
+<p><a href="/swagger-ui.html">Ouvrir Swagger</a></p>
+</main>
+<script>
+const plan = document.querySelector('#plan');
+const selection = document.querySelector('#selection');
+const reserver = document.querySelector('#reserver');
+const payer = document.querySelector('#payer');
+const etat = document.querySelector('#etat');
+const choix = new Map();
+const categories = ['PLEIN', 'REDUIT', 'ENFANT', 'MATIN', 'ABONNE'];
+let places = [];
+let commande = null;
+let occupe = false;
+
+async function requete(url, body) {
+  const response = await fetch(url, body === undefined ? {} : {
+    method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+  });
+  if (response.status === 204) return;
+  const resultat = await response.json();
+  if (!response.ok) throw new Error(resultat.detail || 'Requête refusée (' + response.status + ')');
+  return resultat;
+}
+
+function afficher() {
+  plan.replaceChildren(...places.map(({place, libre}) => {
+    const bouton = document.createElement('button');
+    bouton.textContent = place;
+    bouton.disabled = !libre || occupe;
+    bouton.setAttribute('aria-pressed', choix.has(place));
+    bouton.addEventListener('click', () => {
+      if (choix.has(place)) choix.delete(place);
+      else if (choix.size < 10) choix.set(place, 'PLEIN');
+      else etat.textContent = 'La sélection est limitée à 10 fauteuils.';
+      afficher();
+    });
+    return bouton;
+  }));
+  selection.replaceChildren(...Array.from(choix, ([place, categorie]) => {
+    const label = document.createElement('label');
+    const select = document.createElement('select');
+    for (const type of categories) select.add(new Option(type, type));
+    select.value = categorie;
+    select.disabled = occupe;
+    select.addEventListener('change', () => choix.set(place, select.value));
+    label.append(place + ' ', select);
+    return label;
+  }));
+  reserver.disabled = occupe || !choix.size || Boolean(commande);
+  payer.disabled = occupe || !commande;
+}
+
+async function chargerPlan(enArrierePlan = false) {
+  const actualisees = await requete('/seances/S42/places');
+  if (enArrierePlan && (occupe || JSON.stringify(places) === JSON.stringify(actualisees))) return;
+  places = actualisees;
+  for (const {place, libre} of places) if (!libre) choix.delete(place);
+  afficher();
+}
+
+async function executer(action) {
+  occupe = true;
+  afficher();
+  try {
+    await action();
+  } catch (erreur) {
+    etat.textContent = erreur.message;
+  } finally {
+    try { await chargerPlan(); }
+    catch (erreur) { etat.textContent += ' Plan indisponible. ' + erreur.message; }
+    occupe = false;
+    afficher();
+  }
+}
+
+document.querySelector('#reservation').addEventListener('submit', evenement => {
+  evenement.preventDefault();
+  executer(async () => {
+    const billets = Array.from(choix, ([place, categorie]) => ({place, categorie}));
+    const resultat = await requete('/seances/S42/reservations', {billets});
+    choix.clear();
+    commande = resultat.urlPaiement ? resultat : null;
+    const limite = new Date(resultat.payerAvant).toLocaleTimeString('fr-FR');
+    etat.textContent = resultat.commande + ' · ' + resultat.total
+      + (commande ? ' · À payer avant ' + limite : ' · Commande confirmée');
+  });
+});
+payer.addEventListener('click', () => executer(async () => {
+  await requete('/webhooks/payvia', {
+    event: 'payment.succeeded', reference: commande.commande, payment_id: 'demo-' + commande.commande,
+    amount: commande.totalCentimes, currency: 'EUR', occurred_at: new Date().toISOString()
+  });
+  etat.textContent = 'Notification de paiement reçue pour ' + commande.commande;
+  commande = null;
+}));
+chargerPlan().catch(erreur => etat.textContent = erreur.message);
+setInterval(() => {
+  if (!occupe) chargerPlan(true).catch(() => {});
+}, 10000);
+</script>
+</body>
+</html>

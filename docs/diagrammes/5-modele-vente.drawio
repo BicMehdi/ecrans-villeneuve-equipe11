@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Quels agrégats protègent les règles de la vente ?" id="5-modele-vente">
+    <mxGraphModel grid="1" page="1" pageWidth="1320" pageHeight="623">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Quels agrégats protègent les règles de la vente ?" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=35;fontStyle=1;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="14" width="1272" height="54" />
+        </mxCell>
+        <mxCell id="3" value="Vert · racine d’agrégat     Gris · objets valeur     Violet · événements" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="24" y="581" width="1272" height="34" />
+        </mxCell>
+        <mxCell id="4" value="Seance&#10;B1 · B2 · B4" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=29;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="62" y="120" width="420" height="121" />
+        </mxCell>
+        <mxCell id="5" value="Commande&#10;B3 · B6 · cycle de vie" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=29;fontStyle=1;rounded=1;fillColor=#DDF1E5;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="838" y="120" width="420" height="121" />
+        </mxCell>
+        <mxCell id="6" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="838" y="187" />
+            <mxPoint as="targetPoint" x="482" y="187" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7" value="référence par SeanceId" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="556" y="155" width="207" height="26" />
+        </mxCell>
+        <mxCell id="8" value="PlaceId → EtatPlace&#10;Libre · Bloquée · Vendue" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=25;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="62" y="338" width="420" height="104" />
+        </mxCell>
+        <mxCell id="9" value="1..10 Billet&#10;PlaceId + Tarif (catégorie et montant)" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=24;fontStyle=1;rounded=1;fillColor=#EAF0F7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="838" y="338" width="420" height="104" />
+        </mxCell>
+        <mxCell id="10" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="272" y="241" />
+            <mxPoint as="targetPoint" x="272" y="338" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="contient 0..*" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="215" y="257" width="114" height="26" />
+        </mxCell>
+        <mxCell id="12" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1048" y="241" />
+            <mxPoint as="targetPoint" x="1048" y="338" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="13" value="contient 1..10" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="984" y="257" width="128" height="26" />
+        </mxCell>
+        <mxCell id="14" value="CommandePayee · CommandeExpiree&#10;PaiementARembourser" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=23;fontStyle=1;rounded=1;fillColor=#F1EDF7;strokeColor=#9BACBE" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="390" y="494" width="540" height="72" />
+        </mxCell>
+        <mxCell id="15" value="" style="endArrow=block;dashed=0;strokeWidth=2;strokeColor=#52647C" parent="1" edge="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1048" y="442" />
+            <mxPoint as="targetPoint" x="930" y="530" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="16" value="enregistre" style="whiteSpace=wrap;align=center;verticalAlign=middle;html=0;fontColor=#1C2A3B;fontSize=20;fontStyle=0;strokeColor=none;fillColor=none" parent="1" vertex="1">
+          <mxGeometry as="geometry" x="1015" y="479" width="97" height="26" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
