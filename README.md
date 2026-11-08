@@ -2,8 +2,8 @@
 
 Démonstrateur de la billetterie du multiplexe pour le projet final de Bachelor 3 Informatique. Le domaine Vente gère un stock de fauteuils partagé, la réservation de dix minutes, la confirmation de paiement, l’expiration et les ventes déjà payées chez SortiesFlash.
 
-**Équipe** — noms et numéro à renseigner.  
-**Dépôt distant** — URL à renseigner avant le rendu.
+**Équipe** — Mehdi , Christ , Jordan 
+**Dépôt distant** — ** [BicMehdi/ecrans-villeneuve-equipe11](https://github.com/BicMehdi/ecrans-villeneuve-equipe11)
 
 ## Démarrer
 
