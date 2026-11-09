@@ -2,8 +2,8 @@
 
 Démonstrateur de la billetterie du multiplexe pour le projet final de Bachelor 3 Informatique. Le domaine Vente gère un stock de fauteuils partagé, la réservation de dix minutes, la confirmation de paiement, l’expiration et les ventes déjà payées chez SortiesFlash.
 
-**Équipe** — Mehdi , Christ , Jordan 
-**Dépôt distant** — ** [BicMehdi/ecrans-villeneuve-equipe11](https://github.com/BicMehdi/ecrans-villeneuve-equipe11)
+**Équipe 11** — Mehdi, Jordan et Christ  
+**Dépôt distant** — [BicMehdi/ecrans-villeneuve-equipe11](https://github.com/BicMehdi/ecrans-villeneuve-equipe11)
 
 ## Démarrer
 
@@ -21,8 +21,15 @@ mvn spring-boot:run
 - [Diagrammes éditables et exports](docs/diagrammes/README.md)
 - [Déroulé de la restitution](docs/restitution.md)
 
-Pour démontrer le verrou optimiste JPA sur les séances avec H2, arrêtez la première application et lancez `mvn spring-boot:run -Dspring-boot.run.profiles=jpa` depuis `code/vente`. Le module utilise des simulateurs de paiement et de publication. Les commandes restent en mémoire dans les deux profils.
+Le profil `jpa` démontre le verrou optimiste avec H2. Le profil `postgres` active le même adapter JPA sur PostgreSQL : consultez [`code/vente/README.md`](code/vente/README.md) pour les variables et la commande Docker. Les commandes et les événements restent en mémoire dans ce prototype ; la séance et sa version sont persistées.
+
+## Répartition du travail
+
+- **Mehdi** — intégration Spring Boot, API/Swagger, profil PostgreSQL et préparation de la démonstration.
+- **Jordan** — modèle `Seance`/`Commande`, scénarios de réservation-paiement et tests automatisés.
+- **Christ** — analyse DDD, diagrammes, DAT, ADR et risques d’architecture.
+- **En commun** — relecture, essais fonctionnels, préparation de l’oral et validation du rendu.
 
 ## État du rendu
 
-Les huit étapes, les scénarios de paiement tardif et dupliqué, la concurrence, le plan, la page de réservation, l’adapter H2 et l’annulation de séance sont implémentés. Le DAT distingue la cible du démonstrateur. Le [protocole de vérification](docs/verification.md) permet de rejouer la charge de 420 fauteuils. Renseignez l’équipe et le lien du dépôt, puis publiez la version à remettre avec le tag `v1.0` et déposez le lien sur Moodle.
+Les huit étapes, les scénarios de paiement tardif et dupliqué, la concurrence, le plan, la page de réservation, les adapters H2/PostgreSQL et l’annulation de séance sont implémentés. Le DAT distingue la cible du démonstrateur. Le [protocole de vérification](docs/verification.md) permet de rejouer la charge de 420 fauteuils. La version finale est identifiée par le tag `v1.0`.

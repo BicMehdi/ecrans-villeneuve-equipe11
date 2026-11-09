@@ -92,6 +92,7 @@ public class VenteConfiguration {
     }
 
     @Bean
+    @Profile("!postgres")
     CommandLineRunner seanceDeDemonstration(ApplicationVente app, LocalDate dateDeDemonstration,
                                               @Value("${vente.demo.grande-salle:false}") boolean grandeSalle) {
         return args -> {

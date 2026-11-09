@@ -11,6 +11,22 @@ mvn spring-boot:run
 
 Le profil par défaut utilise les séances en mémoire. Pour H2, lancez `mvn spring-boot:run -Dspring-boot.run.profiles=jpa`. Après `mvn package`, le JAR peut aussi se lancer avec `java -jar target/ecrans-vente-1.0.0.jar`.
 
+## PostgreSQL
+
+Le profil `postgres` active automatiquement l'adapter JPA et conserve les
+données entre les redémarrages. Pour un lancement local avec Docker :
+
+```powershell
+$env:DB_PASSWORD = "ecrans-local"
+docker compose up -d postgres
+mvn spring-boot:run "-Dspring-boot.run.profiles=postgres"
+```
+
+En dehors de Docker, renseignez `DB_URL`, `DB_USER` et `DB_PASSWORD`, puis
+activez le profil `postgres`. Aucun mot de passe n'est enregistré dans Git.
+La séance S42 est réservée à la démonstration et n'est pas créée par le
+profil PostgreSQL.
+
 ## Parcours de démonstration
 
 1. Ouvrir `http://127.0.0.1:8080/` et réserver deux fauteuils avec leur catégorie. La page affiche la commande, le total et l’échéance.
