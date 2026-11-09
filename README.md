@@ -2,8 +2,20 @@
 
 Démonstrateur de la billetterie du multiplexe pour le projet final de Bachelor 3 Informatique. Le domaine Vente gère un stock de fauteuils partagé, la réservation de dix minutes, la confirmation de paiement, l’expiration et les ventes déjà payées chez SortiesFlash.
 
-**Équipe** — Mehdi , Christ , Jordan 
-**Dépôt distant** — ** [BicMehdi/ecrans-villeneuve-equipe11](https://github.com/BicMehdi/ecrans-villeneuve-equipe11)
+**Équipe 11** — Mehdi, Christ, Jordan  
+**Dépôt distant** — [BicMehdi/ecrans-villeneuve-equipe11](https://github.com/BicMehdi/ecrans-villeneuve-equipe11)
+
+## Contributions
+
+Répartition visible dans le dépôt et `docs/restitution.md` (sans inventer de tâches absentes du journal Git) :
+
+| Membre | Rôle / contribution attestée |
+|---|---|
+| Mehdi | Compte et dépôt GitHub (`BicMehdi`), mise à jour des métadonnées d’équipe / lien distant, préparation de la restitution orale (`docs/restitution.md`) |
+| Christ | Membre de l’Équipe 11 (fiche orale J5) — périmètre détaillé à confirmer par l’équipe |
+| Jordan | Membre de l’Équipe 11 (fiche orale J5) — périmètre détaillé à confirmer par l’équipe |
+
+<!-- TODO: préciser qui a porté DAT, diagrammes, code Vente et parts d’oral si le passage n’est pas solo. -->
 
 ## Démarrer
 
@@ -25,4 +37,4 @@ Pour démontrer le verrou optimiste JPA sur les séances avec H2, arrêtez la pr
 
 ## État du rendu
 
-Les huit étapes, les scénarios de paiement tardif et dupliqué, la concurrence, le plan, la page de réservation, l’adapter H2 et l’annulation de séance sont implémentés. Le DAT distingue la cible du démonstrateur. Le [protocole de vérification](docs/verification.md) permet de rejouer la charge de 420 fauteuils. Renseignez l’équipe et le lien du dépôt, puis publiez la version à remettre avec le tag `v1.0` et déposez le lien sur Moodle.
+Les huit étapes, les scénarios de paiement tardif et dupliqué, la concurrence, le plan, la page de réservation, l’adapter H2 et l’annulation de séance sont implémentés. Le DAT distingue la cible du démonstrateur. Le [protocole de vérification](docs/verification.md) permet de rejouer la charge de 420 fauteuils. Version à remettre : tag `v1.0` ; déposer le lien du dépôt sur Moodle avant les passages J5.
